@@ -1,53 +1,53 @@
 # Crop Disease Detection CNN
 
-A CNN-based project for classifying crop diseases using the PlantVillage dataset. The main training workflow is captured in a Jupyter notebook, and the repository includes trained model artifacts and a separate evaluation notebook.
+## Problem
 
-## Project Structure
+Crop disease identification is often done manually, which is slow and inconsistent at scale. This project targets automated, image-based classification of crop health and disease for pepper, potato, and tomato using the PlantVillage dataset.
 
-- `Script/` - Training notebook and documentation.
-- `Evalution/` - Model evaluation notebook and documentation.
-- `model/` - Saved model artifacts.
+## Solution
 
-## Notebooks
+Train a convolutional neural network (CNN) on labeled leaf images, then evaluate saved checkpoints. The training workflow is captured in a Jupyter notebook, and a separate notebook evaluates trained models.
 
-- `Script/crop-disease-detection-cnn.ipynb` - End-to-end training pipeline with data loading, augmentation, model building, and training.
-- `Evalution/evaluate_model.ipynb` - Evaluation workflow for trained models.
+## Architecture
 
-For notebook-specific details, see:
+- Training notebook: `Script/crop-disease-detection-cnn.ipynb`
+	- Data loading and preprocessing
+	- Augmentation pipeline
+	- CNN model definition and training loop
+	- Checkpoint saving (best model)
+- Evaluation notebook: `Evalution/evaluate_model.ipynb`
+	- Load trained model artifacts
+	- Metrics and plots
+- Artifacts: `model/` (saved model files)
+
+Supporting docs:
 
 - `Script/README.md`
 - `Evalution/README.md`
 
-## Dataset
+## How To Run
 
-This project uses the PlantVillage dataset organized by class folders. Update the `data_dir` variable in the training notebook to point to your local dataset path. The dataset includes 15 disease/healthy classes across pepper, potato, and tomato.
-
-## Requirements
-
-- Python 3.8+
-- Jupyter Notebook or JupyterLab
-- Core packages: numpy, pandas, matplotlib, seaborn, opencv-python, tqdm, scikit-learn, tensorflow
-
-Install example:
+1. Install dependencies:
 
 ```bash
 pip install numpy pandas matplotlib seaborn opencv-python tqdm scikit-learn tensorflow
 ```
 
-## Outputs
+2. Open the training notebook:
 
-- Training history plots generated in the notebook.
-- Best model checkpoint saved as `model.h5` during training.
-- Optional saved artifacts in `model/`.
+- `Script/crop-disease-detection-cnn.ipynb`
 
-## Quick Start
+3. Set the dataset path in the notebook:
 
-1. Open `Script/crop-disease-detection-cnn.ipynb`.
-2. Set the `data_dir` path to your dataset location.
-3. Run the notebook top-to-bottom.
-4. Use `Evalution/evaluate_model.ipynb` to evaluate saved models.
+- Update `data_dir` to your PlantVillage dataset folder.
+
+4. Run the notebook top-to-bottom to train and save checkpoints.
+
+5. Evaluate a saved model:
+
+- Open `Evalution/evaluate_model.ipynb` and run it top-to-bottom.
 
 ## Notes
 
 - Default image size is 128x128 with 3 channels.
-- If you encounter memory issues, reduce the batch size or image size.
+- If you hit memory limits, reduce batch size or image size.
